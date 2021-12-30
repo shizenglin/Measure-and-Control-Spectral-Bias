@@ -1,42 +1,61 @@
-# The code for [On Measuring and Controlling the Spectral Bias of the Deep Image Prior, IJCV, 2021](https://arxiv.org/pdf/2107.01125.pdf)
+# Paper: [On Measuring and Controlling the Spectral Bias of the Deep Image Prior, IJCV, 2022](https://arxiv.org/pdf/2107.01125.pdf)
 
-![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/noise.jpg)
+<h1> 1. Motivations </h1>
+The deep image prior showed that a randomly initialized network with a suitable architecture can be trained to solve inverse imaging problems by simply optimizing it’s parameters to reconstruct a single degraded image. However, it suffers from two practical limitations: 
+<br>1) It remains unclear how to control the prior beyond the choice of the network architecture; 
+<br>2) Training requires an oracle stopping criterion as during the optimization the performance degrades after reaching an optimum value. 
 
-<h1> Unsharp-mask guided filtering without learning </h1>
-<br> You can find the code in the folder of "matlab"
+<h1> 2. Contributions </h1>
 
-<h2> Usage </h2>
-<br> Run "example_smoothing.m", "example_enhancement.m", and "example_flash.m" to get the Figures 3, 4 and 5
+<h2> 2.1 Measuring Spectral Bias </h2>
+We introduce a frequency-band correspondence measure to characterize the spectral bias of the deep image prior, where low-frequency image signals are learned  faster and better than high-frequency counterparts.
 
-<h1> Unsharp-mask guided filtering with learning </h1>
-<br> You can find the code in the folder of "learning"
+![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/fbc_noise.png)
+<br>Figure 2.1: Spectral measurement of the deep image prior on image denoising. We observe that 1) the network of the deep image prior (Ulyanov et al., 2020) exhibits a spectral bias during optimization, 2) the peak PSNR performance of the deep image prior occurs when the lowest frequencies are matched nearly perfect, while the highest frequencies are less used, as marked by the green vertical lines, and 3) deep image prior performance degrades when high-frequency noise is learned beyond acertain level, which could affect the high-frequency image details.
 
-<h2> Requirements </h2>
+<h2> 2.2 Controlling Spectral Bias </h2>
+Based on our observations, we propose techniques to prevent the eventual performance degradation and accelerate convergence. We introduce a Lipschitz-controlled convolution layer and a Gaussian-controlled upsampling layer as plug-in replacements for layers used in the deep architectures. 
+
+![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/lipschitz_control.png)
+<br>Figure 2.2.1: Lipschitz-controlled spectral bias for image denoising on image 'peppers’. Setting the right Lipschitz constant (λ=2) avoids performance decay while maintaining a high PSNR.
+
+![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/gaussian_control.png)
+<br>Figure 2.2.2: Gaussian-controlled spectral bias for image denoising on image 'peppers’. Varying the Gaussian kernel by σ controls convergence and performance.
+
+<h2> 2.3 Automatic Stopping Criterion </h2>
+With the ability to control the spectral bias, we can fix the number of iterations for network optimization without fear of performance degradation. As different tasks have different levels of convergence, however, using a fixed number of iterations still leads to redundant optimization. To improve efficiency, we compute the blurriness and sharpness for an output image and use their ratio as the metric to automatically perform early stopping.
+
+![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/automatic_stop.png)
+<br> Figure 2.3: Automatic stopping criterion evaluated on image denoising. The vertical green line shows the selected iteration by the proposed stopping criterion. We observe the optimization can be stopped earlier, with a minimal performance loss compared to a fixed stop at 10,000 iterations.
+
+
+<h1> 3. Applications </h1>
+We demonstrate the effectiveness of our method on four inverse imaging applications and one image enhancement application: image denoising, JPEG image deblocking,  image inpainting, image super-resolution and image detail enhancement. 
+
+![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/applications.png)
+<br>Figure 3.1: Image denoising. The experiments show that 1) our method no longer suffers from eventual performance degradation during optimization, relieving us from the need for an oracle criterion to stop early, 2) the automatic stopping criterion avoids superfluous computation, and 3) our method also obtains favorable restoration and enhancement results compared to current approaches, across all tasks.
+
+<h1> 4. Code Usage </h2>
+
+<h2> 4.1 Requirements </h2>
      1. CUDA 8.0 and Cudnn 7.5 or higher
 <br> 2. GPU memory 10GB or higher
 <br> 3. Python 2.7 or higher 
 <br> 4. Pytorch 1.6 or higher. If your Tensorflow version is lower than 2.0, you should replace "import tensorflow.compat.v1 as tf" with "import tensorflow as tf" in "main.py", "model.py", and "ops.py"
 
-<h2> Training </h2>
+<h2> 4.2 Running </h2>
      1. Prepare your data (download the NYU Depth V2 dataset <a href="https://drive.google.com/file/d/1RAYK7zm_qXp6nrzjaNVaBRQc8sk9hzkn/view?usp=sharing" target="_blank">here</a>) following Section V-A.
 <br> 2. Set the experiment settings in ¨tr_param.ini¨ in which phase = train, and set other parameters accordingly (refer to our paper).
 <br> 3. Run ¨python main.py¨
 
-<h2> Testing </h2>
-     1. Prepare your data following Section V-A.
-<br> 2. Set the experiment settings in ¨tr_param.ini¨ in which phase = test, and set other parameters accordingly (refer to our paper).
-<br> 3. Run ¨python main.py¨
 
 
 Please cite our paper when you use this code.
 
-     @article{shi2021unsharp,
-        title={Unsharp Mask Guided Filtering},
-        author={Shi, Zenglin and Chen, Yunlu and Gavves, Efstratios and Mettes, Pascal and Snoek, Cees GM},
-        journal={IEEE Transactions on Image Processing},
-        volume={30},
-        pages={7472 - 7485},
-        year={2021},
-        publisher={IEEE}
+     @article{ShiIJCV22,
+        title={On Measuring and Controlling the Spectral Bias of the Deep Image Prior},
+        author={Zenglin Shi and Pascal Mettes and Subhransu Maji and Cees G M Snoek},
+        journal={International Journal of Computer Vision},
+        year={2022}
      }
 
