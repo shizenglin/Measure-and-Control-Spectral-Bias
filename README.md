@@ -1,8 +1,6 @@
 # [On Measuring and Controlling the Spectral Bias of the Deep Image Prior, IJCV, 2021](https://arxiv.org/pdf/2107.01125.pdf)
 
-![image](https://github.com/shizenglin/Unsharp-Mask-Guided-Filtering/blob/main/motivation.png)
-
-![image](https://github.com/shizenglin/Unsharp-Mask-Guided-Filtering/blob/main/network.png)
+![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/noise.jpg)
 
 <h1> Unsharp-mask guided filtering without learning </h1>
 <br> You can find the code in the folder of "matlab"
