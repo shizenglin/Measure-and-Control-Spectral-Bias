@@ -1,4 +1,4 @@
-# Paper: [On Measuring and Controlling the Spectral Bias of the Deep Image Prior, IJCV, 2022](https://arxiv.org/pdf/2107.01125.pdf)
+# Paper: On Measuring and Controlling the Spectral Bias of the Deep Image Prior, IJCV, 2022 [[pdf]](https://arxiv.org/pdf/2107.01125.pdf)
 
 <h1> 1 Motivations </h1>
 The deep image prior showed that a randomly initialized network with a suitable architecture can be trained to solve inverse imaging problems by simply optimizing it’s parameters to reconstruct a single degraded image. However, it suffers from two practical limitations: 
