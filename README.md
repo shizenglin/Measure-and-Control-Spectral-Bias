@@ -1,4 +1,4 @@
-# [On Measuring and Controlling the Spectral Bias of the Deep Image Prior, IJCV, 2021](https://arxiv.org/pdf/2107.01125.pdf)
+[On Measuring and Controlling the Spectral Bias of the Deep Image Prior, IJCV, 2021](https://arxiv.org/pdf/2107.01125.pdf)
 
 ![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/noise.jpg)
 
