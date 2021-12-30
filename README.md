@@ -1,11 +1,11 @@
 # Paper: [On Measuring and Controlling the Spectral Bias of the Deep Image Prior, IJCV, 2022](https://arxiv.org/pdf/2107.01125.pdf)
 
-<h1> 1. Motivations </h1>
+<h1> 1 Motivations </h1>
 The deep image prior showed that a randomly initialized network with a suitable architecture can be trained to solve inverse imaging problems by simply optimizing it’s parameters to reconstruct a single degraded image. However, it suffers from two practical limitations: 
 <br>1) It remains unclear how to control the prior beyond the choice of the network architecture; 
 <br>2) Training requires an oracle stopping criterion as during the optimization the performance degrades after reaching an optimum value. 
 
-<h1> 2. Contributions </h1>
+<h1> 2 Contributions </h1>
 
 <h2> 2.1 Measuring Spectral Bias </h2>
 We introduce a frequency-band correspondence measure to characterize the spectral bias of the deep image prior, where low-frequency image signals are learned  faster and better than high-frequency counterparts.
@@ -29,27 +29,29 @@ With the ability to control the spectral bias, we can fix the number of iteratio
 <br> Figure 2.3: Automatic stopping criterion evaluated on image denoising. The vertical green line shows the selected iteration by the proposed stopping criterion. We observe the optimization can be stopped earlier, with a minimal performance loss compared to a fixed stop at 10,000 iterations.
 
 
-<h1> 3. Applications </h1>
+<h1> 3 Applications </h1>
 We demonstrate the effectiveness of our method on four inverse imaging applications and one image enhancement application: image denoising, JPEG image deblocking,  image inpainting, image super-resolution and image detail enhancement. 
 
 ![image](https://github.com/shizenglin/Measure-and-Control-Spectral-Bias/blob/main/img/applications.png)
 <br>Figure 3.1: Image denoising. The experiments show that 1) our method no longer suffers from eventual performance degradation during optimization, relieving us from the need for an oracle criterion to stop early, 2) the automatic stopping criterion avoids superfluous computation, and 3) our method also obtains favorable restoration and enhancement results compared to current approaches, across all tasks.
 
-<h1> 4. Code Usage </h2>
+<h1> 4 Code Usage </h1>
 
 <h2> 4.1 Requirements </h2>
-     1. CUDA 8.0 and Cudnn 7.5 or higher
-<br> 2. GPU memory 10GB or higher
-<br> 3. Python 2.7 or higher 
-<br> 4. Pytorch 1.6 or higher. If your Tensorflow version is lower than 2.0, you should replace "import tensorflow.compat.v1 as tf" with "import tensorflow as tf" in "main.py", "model.py", and "ops.py"
+
+        1) CUDA 8.0 and Cudnn 7.5 or higher
+        2) GPU memory 4GB or higher
+        3) Python 2.7 or higher 
+        4) Pytorch 1.5 or higher.
 
 <h2> 4.2 Running </h2>
-     1. Prepare your data (download the NYU Depth V2 dataset <a href="https://drive.google.com/file/d/1RAYK7zm_qXp6nrzjaNVaBRQc8sk9hzkn/view?usp=sharing" target="_blank">here</a>) following Section V-A.
-<br> 2. Set the experiment settings in ¨tr_param.ini¨ in which phase = train, and set other parameters accordingly (refer to our paper).
-<br> 3. Run ¨python main.py¨
+
+        1) Prepare your data () following Section V-A.
+        2) Set the experimental parameters accordingly (refer to our paper).
+        3) Run ¨python main.py¨
 
 
-
+<h1> 5 Citation </h1>
 Please cite our paper when you use this code.
 
      @article{ShiIJCV22,
