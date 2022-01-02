@@ -51,6 +51,7 @@ We demonstrate the effectiveness of our method on four inverse imaging applicati
 <h2> 4.3 Notes </h2>
      1) The value of lambda in Lipschitz normalization should be tuned for each input image. Generally, we found that lambda=1.4 works well when using bilinear upsampling, and lambda=1.8 works well when using our Gaussian upsamling. 
 <br>2) By introduing the Gaussian upsampling, we show that upsampling operation affacts the spectral bias and optimization convergence. However, we found that the Gaussian upsampling is practically slower than bilinear upsampling because we implement the Gaussian upsampling by using nn.ConvTranspose2d. Thus, in the provided code we use the bilinear upsampling by default.
+<br>3) We compute spectral norm by using torch.svd because we found that the power method is inaccurate and unstable.
 
 
 <h1> 5 Citation </h1>
