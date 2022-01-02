@@ -51,7 +51,7 @@ We demonstrate the effectiveness of our method on four inverse imaging applicati
 <br>3) Run ¨python xxxx.py¨ where xxxx denotes the task name, e.g. denoising
 
 <h2> 4.3 Notes </h2>
-<br>1) . The value of lambda in Lipschitz normalization should be turned for each input image. Generally, we found that lambda=1.4 works well when using bilinear upsampling, and lambda=1.8 works well when using our Gaussian upsamling. 
+<br>1) . The value of lambda in Lipschitz normalization should be tuned for each input image. Generally, we found that lambda=1.4 works well when using bilinear upsampling, and lambda=1.8 works well when using our Gaussian upsamling. 
 <br>2) By introduing the Gaussian upsampling, we show that upsampling operation affacts the spectral bias and optimization convergence. Because we implement the Gaussian upsampling with nn.ConvTranspose2d, in practical usage, the Gaussian upsampling is slower than bilinear upsampling. Thus, we use the bilinear upsampling in the code by default.
 
 
