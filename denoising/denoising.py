@@ -142,7 +142,6 @@ optimize(OPTIMIZER, net.parameters(), closure, LR, num_iter)
 log_file.close()
 
 #visualization
-
 out_np = torch_to_np(out)
 save2img(out_np, "./figs/%s_denoised.png" % img_name)#save the denoised image
 
