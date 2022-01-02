@@ -39,16 +39,16 @@ We demonstrate the effectiveness of our method on four inverse imaging applicati
 
 <h2> 4.1 Requirements </h2>
 
-        1) CUDA 8.0 and Cudnn 7.5 or higher
-        2) GPU memory 4GB or higher
-        3) Python 2.7 or higher 
-        4) Pytorch 1.5 or higher.
+1) CUDA 8.0 and Cudnn 7.5 or higher
+<br>2) GPU memory 4GB or higher
+<br>3) Python 2.7 or higher 
+<br>4) Pytorch 1.5 or higher.
 
 <h2> 4.2 Running </h2>
 
-        1) Prepare your data () following Section V-A.
-        2) Set the experimental parameters accordingly (refer to our paper).
-        3) Run ¨python main.py¨
+1) You can find the used data in the folder 'dataset'.
+<br>2) Set the experimental parameters accordingly (refer to the paper).
+<br>3) Run ¨python xxxx.py¨ where xxxx denotes the task name, e.g. denoising
 
 
 <h1> 5 Citation </h1>
