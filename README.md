@@ -39,19 +39,19 @@ We demonstrate the effectiveness of our method on four inverse imaging applicati
 
 <h2> 4.1 Requirements </h2>
 
-1) CUDA 8.0 and Cudnn 7.5 or higher
+    1) CUDA 8.0 and Cudnn 7.5 or higher
 <br>2) GPU memory 4GB or higher
 <br>3) Python 2.7 or higher 
 <br>4) Pytorch 1.5 or higher.
 
 <h2> 4.2 Running </h2>
 
- 1) You can find the used data in the folder 'dataset'.
+    1) You can find the used data in the folder 'dataset'.
 <br>2) Set the experimental parameters accordingly (refer to the paper).
 <br>3) Run ¨python xxxx.py¨ where xxxx denotes the task name, e.g. denoising
 
 <h2> 4.3 Notes </h2>
- 1) . The value of lambda in Lipschitz normalization should be tuned for each input image. Generally, we found that lambda=1.4 works well when using bilinear upsampling, and lambda=1.8 works well when using our Gaussian upsamling. 
+     1) The value of lambda in Lipschitz normalization should be tuned for each input image. Generally, we found that lambda=1.4 works well when using bilinear upsampling, and lambda=1.8 works well when using our Gaussian upsamling. 
 <br>2) By introduing the Gaussian upsampling, we show that upsampling operation affacts the spectral bias and optimization convergence. However, we found that the Gaussian upsampling is practically slower than bilinear upsampling because we implement the Gaussian upsampling by using nn.ConvTranspose2d. Thus, in the provided code we use the bilinear upsampling by default.
 
 
