@@ -44,7 +44,7 @@ def get_fbc_fig(all_norms,num_iter,ylim=1,save_path='',img_name=''):
     #plt.title('FBC (%s)'%img_name)
 
     color_list = ['#331900', '#994C00', '#CC6600',  '#FF8000', '#FF9933']
-    rate = 10
+    rate = 1
     for i in range(norms.shape[1]):
         plt.plot(range(0,num_iter,rate), norms[:num_iter:rate,i], linewidth=4, color=color_list[i], label=label_list[i]) 
 
@@ -67,7 +67,7 @@ def get_psnr_ratio_fig(all_datas,num_iter,ylim=35, ylabel='',save_path='',img_na
     label_list = ['PSNR','Ratio']
     color_list = ['#d94a31','#4b43db']
 
-    rate = 10
+    rate = 1
 
     for i in range(len(all_datas)):
         plt.plot(range(0,num_iter,rate), all_datas[i][0:num_iter:rate], linewidth=4, color=color_list[i], label=label_list[i])
