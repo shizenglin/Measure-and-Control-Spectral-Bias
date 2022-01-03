@@ -62,7 +62,7 @@ net = decoder(num_input_channels=input_depth, num_output_channels=1, ln_lambda=l
 
 #optimization parameters
 OPTIMIZER='adam'
-num_iter = 2000
+num_iter = 10000
 LR = 0.001
 reg_noise_std = 0#1./30, injecting noise in the input.
 show_every = 100
