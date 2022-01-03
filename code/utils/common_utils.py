@@ -17,6 +17,23 @@ def save2img(d_img, fn):
     img = img.astype('uint8')
     imageio.imwrite(fn, img)
 
+def save2enhanceimg(ori_img, out_img, fn):
+    ori_img = np.clip(ori_img.transpose(1, 2, 0),0,1)
+    out_img = np.clip(out_img.transpose(1, 2, 0),0,1)
+
+    edge_img = np.clip((ori_img-out_img),0,1)
+    en_img = np.clip(edge_img+ori_img,0,1)
+
+    ori_img = ori_img*255.0
+    ori_img = ori_img.astype('uint8')
+    out_img = out_img*255.0
+    out_img = out_img.astype('uint8')
+
+    en_img = en_img*255.0
+    en_img = en_img.astype('uint8')
+
+    imageio.imwrite(fn, en_img)
+
 def rgb2gray(rgb):
 
     r, g, b = rgb[:,:,0], rgb[:,:,1], rgb[:,:,2]
