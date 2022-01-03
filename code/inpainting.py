@@ -119,7 +119,7 @@ def closure():
             if np.abs(ratio1-ratio2)<ratio_epsilon:
                 print("The optimization is automatically stopped!")
                 out_np = torch_to_np(out)
-                save2img(out_np, "./figs/%s_denoised.png" % img_name)
+                save2img(out_np, "./figs/%s_inpainted.png" % img_name)
                 exit()
 
     print ('Iteration: %05d, Loss: %f, PSRN_gt: %f' % (i, total_loss.item(), psrn_gt))
@@ -136,7 +136,7 @@ log_file.close()
 #visualization
 
 out_np = torch_to_np(out)
-save2img(out_np, "./figs/%s_denoised.png" % img_name)#save the denoised image
+save2img(out_np, "./figs/%s_inpainted.png" % img_name)#save the denoised image
 
 frequency_lists, psnr_list, ratio_list = get_log_data(log_path)
 get_fbc_fig(frequency_lists,num_iter,ylim=1,save_path="./figs/%s_fbc.png"%img_name)#save the fbc figure
