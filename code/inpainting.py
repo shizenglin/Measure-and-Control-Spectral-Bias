@@ -54,7 +54,7 @@ input_depth = 32
 net_input = get_noise(input_depth, INPUT, (img_pil.size[1]//32, img_pil.size[0]//32),var=var).type(dtype).detach()
 
 #network parameters
-ln_lambda=1.4#the lambda in Lipschitz normalization, which is used to control spectral bias
+ln_lambda=1.6#the lambda in Lipschitz normalization, which is used to control spectral bias
 upsample_mode='bilinear'#['deconv', 'nearest', 'bilinear', 'gaussian'], where 'gaussian' denotes our Gaussian upsampling. 
 pad = 'reflection'
 #decoder is the used network architecture in the paper
@@ -63,7 +63,7 @@ net = decoder(num_input_channels=input_depth, num_output_channels=1, ln_lambda=l
 
 #optimization parameters
 OPTIMIZER='adam'
-num_iter = 2000
+num_iter = 10000
 LR = 0.001
 reg_noise_std = 0#1./30, injecting noise in the input.
 show_every = 100
